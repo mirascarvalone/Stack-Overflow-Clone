@@ -1,0 +1,5 @@
+<div id='show-question'>
+  <h1> <%=@question.title %> </h1>
+  <h3> Written by: <%=@question.author_username%> on <%=long_form_date(@question.updated_at)%> </h3>
+  <h2> <%=@question.content %> </h2>
+</div>

@@ -20,6 +20,7 @@
     <% else%>
       <div id='signout'>
         <li> Hey <%= current_user.username %>!</li>
+        <li><%= link_to "Add a question", new_question_path %></li>
         <li><%= link_to "Profile", user_path(current_user) %> </li>
         <li><%= link_to "Log out", logout_path, method: :delete %><li>
       </div>

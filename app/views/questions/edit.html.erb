@@ -1,0 +1,13 @@
+<% if @question.user == current_user %>
+
+  <div id='show-post'>
+    <%= form_for @question, method: :patch do |f| %>
+      Title: <%= f.text_field :title, size: "40" %><br />
+      Content: <%= f.text_area :content, rows: "10", cols: "60"  %><br />
+      <%= f.submit 'Edit Question' %>
+    <% end %>
+  </div>
+
+<% else %>
+  <h1> You cannot access this page. </h1>
+<% end %>

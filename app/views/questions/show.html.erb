@@ -2,6 +2,12 @@
   <h1> <%=@question.title %> </h1>
   <h3> Written by: <%=@question.author_username%> on <%=long_form_date(@question.updated_at)%> </h3>
   <h2> <%=@question.content %> </h2>
+  <% if @question.user == current_user %>
+      <li><%= link_to 'Edit Question', edit_question_path(@question) %></li>
+      <li><%= link_to 'Delete Question', question_path(@question),
+          method: :delete,
+          data: {confirm: 'Are you sure you want to delete this question?'} %></li>
+    <% end %>
 </div>
 
 <div id='show-answers'>

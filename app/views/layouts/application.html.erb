@@ -8,6 +8,25 @@
 </head>
 <body>
 
+<div id='navigation-bar'>
+  <ul>
+    <li class='logo'>WELCOME TO STACK OVERCLONE</li>
+    <li class='logo'><%= link_to "Questions", questions_path %></li>
+    <% if !logged_in? %>
+      <div id='signin'>
+        <li><%= link_to "Register", register_path %></li>
+        <li><%= link_to "Log In", login_path %></li>
+      </div>
+    <% else%>
+      <div id='signout'>
+        <li> Hey <%= current_user.username %>!</li>
+        <li><%= link_to "Profile", user_path(current_user) %> </li>
+        <li><%= link_to "Log out", logout_path, method: :delete %><li>
+      </div>
+    <% end%>
+  </ul>
+</div>
+
 <%= yield %>
 
 </body>

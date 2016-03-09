@@ -1,19 +1,13 @@
-<h1> Log in to your account here: </h1>
+<% if !logged_in? %>
+  <div id='login-form'>
+    <h1> Log in to your account here: </h1>
 
-<%= form_tag sessions_path do %>
-<fieldset>
-  <legend>Log In</legend>
-  <div>
-    <%= label_tag :username %>
-    <%= text_field_tag :username %>
+    <%= form_for :session do |f| %>
+      Username: <%= f.text_field :username %><br />
+      Password: <%= f.password_field :password %><br />
+      <%= f.submit 'Log In', :id => 'button' %>
+    <% end %>
   </div>
-
-  <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div>
-    <%= submit_tag 'Log in' %>
-  </div>
-</fieldset>
+<% else %>
+  <h1> You do not have access to this page. </h1>
 <% end %>

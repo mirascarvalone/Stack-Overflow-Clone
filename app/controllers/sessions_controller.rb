@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       log_in(user)
-      redirect_to questions_path
+      redirect_to user
     else
       render :new
     end
@@ -16,6 +16,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to new_session_path
+    redirect_to login_path
   end
 end

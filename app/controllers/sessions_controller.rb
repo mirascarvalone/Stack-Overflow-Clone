@@ -1,11 +1,13 @@
 class SessionsController < ApplicationController
+  skip_before_action :ensure_current_user
+
   def new
   end
 
   def create
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      log_in(user)
       redirect_to questions_path
     else
       render :new
@@ -13,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.clear
+    log_out
     redirect_to new_session_path
   end
 end

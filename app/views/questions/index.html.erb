@@ -1,0 +1,8 @@
+<% @questions.each do |question| %>
+  <ul class='question'>
+    <li><%=question.title%></li>
+    <li><%=question.content%></li>
+    <li>Written by:
+      <%=question.author_username%> on <%=long_form_date(question.updated_at)%> </li><br/>
+  </ul>
+<% end %>

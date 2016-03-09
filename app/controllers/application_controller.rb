@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :long_form_date
 
   before_action :ensure_current_user, only: [:new, :create, :update, :destroy]
 
@@ -26,5 +26,9 @@ class ApplicationController < ActionController::Base
 
   def ensure_current_user
     redirect_to new_session_path unless current_user
+  end
+
+  def long_form_date(timestamp)
+    timestamp.strftime('%B %e, %Y')
   end
 end

@@ -1,4 +1,4 @@
-<%= form_for [@question, @answer] do |f| %>
+<%= form_for [question, comment] do |f| %>
   Content: <%= f.text_area :content, rows: "10", cols: "30" %><br />
-  <%= f.submit 'Submit Answer' %>
+  <%= f.submit 'Submit Comment' %>
 <% end %>

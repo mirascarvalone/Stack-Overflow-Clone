@@ -10,6 +10,20 @@
     <% end %>
 </div>
 
+<h3> Existing Comments </h3>
+<div id='show-comments'>
+  <% @comments.each do |comment| %>
+    <ul class='comment'>
+      <li><%=comment.content%></li>
+      <li>Written by: <%=comment.commenter_username%> on <%= long_form_date(comment.updated_at)%></li>
+    </ul>
+  <% end %>
+</div>
+
+<h3>Add a comment</h3>
+<%= render partial: "./comments/new", layout: false, locals: {question: @question, comment: @comment} %>
+
+<h3> Existing Answers </h3>
 <div id='show-answers'>
   <% @answers.each do |answer| %>
     <ul class='answer'>
@@ -19,4 +33,5 @@
   <% end %>
 </div>
 
+<h3>Add an answer</h3>
 <%= render partial: "./answers/new", layout: false, locals: {question: @question, answer: @answer} %>

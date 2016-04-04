@@ -7,6 +7,8 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answers = Answer.where(question: @question)
     @answer = Answer.new
+    @comments = Comment.where(commentable_id: @question.id, commentable_type: @question.class.name)
+    @comment = Comment.new
   end
 
   def new
